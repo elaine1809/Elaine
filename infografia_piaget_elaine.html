@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Construcción del Conocimiento: Un Viaje con Piaget</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Header mejorado */
+        .header {
+            text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="puzzle" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10,0 Q15,5 10,10 Q5,5 10,0 M0,10 Q5,15 10,10 Q5,5 0,10 M10,10 Q15,15 20,10 Q15,5 10,10 M10,10 Q5,15 10,20 Q15,15 10,10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23puzzle)"/></svg>') center/cover;
+            opacity: 0.1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .brain-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .header h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .header .subtitle {
+            font-size: 1.3em;
+            font-weight: 400;
+            opacity: 0.95;
+            letter-spacing: 0.5px;
+        }
+
+        /* Secciones mejoradas */
+        .section {
+            margin-bottom: 40px;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .section-header {
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .section-1 .section-header {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+        }
+
+        .section-2 .section-header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+        }
+
+        .section-3 .section-header {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .section-4 .section-header {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+
+        .section-5 .section-header {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
+        }
+
+        .section-6 .section-header {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.75em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .section-title-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-icon {
+            font-size: 2.5em;
+            opacity: 0.9;
+        }
+
+        .section-description {
+            font-size: 1.1em;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .expand-indicator {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .expand-indicator.expanded {
+            transform: rotate(180deg);
+        }
+
+        /* Contenido expandible */
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #f8fafc;
+        }
+
+        .expandable-content.show {
+            max-height: 1000px;
+        }
+
+        .expandable-inner {
+            padding: 30px;
+        }
+
+        .expandable-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #374151;
+        }
+
+        /* Etapas del desarrollo */
+        .etapas-visual {
+            padding: 30px;
+            background: #f8fafc;
+        }
+
+        .escalera-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .escalera-title {
+            font-size: 2em;
+            font-weight: 600;
+            color: #8b5cf6;
+            margin-bottom: 20px;
+        }
+
+        .escalera-image {
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            background: linear-gradient(45deg, #3b82f6, #10b981, #f59e0b, #8b5cf6);
+            border-radius: 12px;
+            margin: 0 auto 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .escalera-image::before {
+            content: 'PIAGET\'S STAGES';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: 600;
+            font-size: 1.2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .etapas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .etapa-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .etapa-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .etapa-sensoriomotora {
+            border-color: #3b82f6;
+        }
+        .etapa-sensoriomotora::before {
+            background: #3b82f6;
+        }
+
+        .etapa-preoperacional {
+            border-color: #10b981;
+        }
+        .etapa-preoperacional::before {
+            background: #10b981;
+        }
+
+        .etapa-concretas {
+            border-color: #f59e0b;
+        }
+        .etapa-concretas::before {
+            background: #f59e0b;
+        }
+
+        .etapa-formales {
+            border-color: #8b5cf6;
+        }
+        .etapa-formales::before {
+            background: #8b5cf6;
+        }
+
+        .etapa-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .etapa-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .etapa-icon {
+            font-size: 2.5em;
+        }
+
+        .etapa-info h3 {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #1f2937;
+        }
+
+        .etapa-edad {
+            background: #374151;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .etapa-description {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .etapa-description.show {
+            display: block;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Procesos de adaptación */
+        .procesos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 30px;
+            background: #f8fafc;
+        }
+
+        .proceso-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proceso-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .proceso-card:hover::before {
+            opacity: 1;
+        }
+
+        .proceso-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .proceso-asimilacion {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        }
+
+        .proceso-acomodacion {
+            background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+        }
+
+        .proceso-equilibracion {
+            background: linear-gradient(135deg, #e9d5ff 0%, #ddd6fe 100%);
+        }
+
+        .proceso-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .proceso-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1f2937;
+        }
+
+        .proceso-description {
+            display: none;
+            color: #4b5563;
+            line-height: 1.6;
+            margin-top: 15px;
+        }
+
+        .proceso-description.show {
+            display: block;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        /* Características del pensamiento */
+        .caracteristicas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #fef2f2;
+        }
+
+        .caracteristica-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid #fecaca;
+        }
+
+        .caracteristica-card:hover {
+            transform: translateY(-5px);
+            border-color: #ef4444;
+            box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.1);
+        }
+
+        .caracteristica-icon {
+            font-size: 2.5em;
+            color: #ef4444;
+            margin-bottom: 15px;
+        }
+
+        .caracteristica-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1f2937;
+        }
+
+        .caracteristica-etapa {
+            background: #ef4444;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .caracteristica-description {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        /* Aplicaciones educativas */
+        .educacion-content {
+            padding: 30px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+
+        .educacion-quote {
+            text-align: center;
+            font-size: 1.4em;
+            font-style: italic;
+            color: #0369a1;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            border-left: 4px solid #0369a1;
+        }
+
+        .principios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .principio-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid #bae6fd;
+            transition: all 0.3s ease;
+        }
+
+        .principio-card:hover {
+            border-color: #0369a1;
+            transform: translateY(-3px);
+        }
+
+        .principio-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .principio-icon {
+            font-size: 1.5em;
+            color: #0369a1;
+        }
+
+        .principio-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .principio-description {
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        /* Quiz mejorado */
+        .quiz-container {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px;
+            border: 2px solid #f59e0b;
+        }
+
+        .quiz-title {
+            font-size: 2em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #92400e;
+        }
+
+        .quiz-question {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+            color: #78350f;
+            line-height: 1.6;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-option {
+            background: white;
+            border: 2px solid #fbbf24;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .quiz-option:hover::before {
+            left: 100%;
+        }
+
+        .quiz-option:hover {
+            transform: translateX(5px);
+            border-color: #f59e0b;
+            box-shadow: 0 5px 15px -3px rgba(245, 158, 11, 0.2);
+        }
+
+        .quiz-option.correct {
+            background: #d1fae5;
+            border-color: #10b981;
+            color: #065f46;
+            transform: scale(1.02);
+        }
+
+        .quiz-option.incorrect {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #991b1b;
+        }
+
+        .quiz-feedback {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .quiz-feedback.show {
+            display: block;
+            animation: slideInUp 0.4s ease;
+        }
+
+        .quiz-feedback.correct {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+        }
+
+        .quiz-feedback.incorrect {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer mejorado */
+        .footer {
+            text-align: center;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 16px;
+            margin-top: 40px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .footer-author {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .footer-subtitle {
+            font-size: 1em;
+            color: #4b5563;
+            margin-bottom: 15px;
+        }
+
+        .footer-reference {
+            font-size: 0.9em;
+            color: #6b7280;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        /* Animaciones de entrada */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.1s; }
+        .fade-in-delay-2 { animation-delay: 0.2s; }
+        .fade-in-delay-3 { animation-delay: 0.3s; }
+        .fade-in-delay-4 { animation-delay: 0.4s; }
+        .fade-in-delay-5 { animation-delay: 0.5s; }
+        .fade-in-delay-6 { animation-delay: 0.6s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 40px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .section-title {
+                font-size: 1.4em;
+            }
+            
+            .etapas-grid,
+            .procesos-grid,
+            .caracteristicas-grid,
+            .principios-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quiz-container {
+                margin: 20px 0;
+                padding: 20px;
+            }
+        }
+
+        /* Efectos adicionales */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .glow {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Premium -->
+        <div class="header fade-in">
+            <div class="header-content">
+                <span class="brain-icon floating">🧠</span>
+                <h1>La Construcción del Conocimiento</h1>
+                <p class="subtitle">Un Viaje con Piaget</p>
+            </div>
+        </div>
+
+        <!-- Sección 1: Teoría Psicogenética -->
+        <div class="section section-1 fade-in fade-in-delay-1">
+            <div class="section-header" onclick="toggleSection('section1')">
+                <div class="section-title">
+                    <div class="section-title-content">
+                        <span class="section-icon">🔬</span>
+                        <div>
+                            <div>El Niño como Pequeño Científico</div>
+                            <div class="section-description">El conocimiento se construye activamente. ¡No se recibe, se crea!</div>
+                        </div>
+                    </div>
+                    <span class="expand-indicator" id="indicator1">▼</span>
+                </div>
+            </div>
+            <div class="expandable-content" id="section1">
+                <div class="expandable-inner">
+                    <p class="expandable-text">
+                        <strong>Teoría Psicogenética:</strong> Según Piaget, el desarrollo cognitivo es una reorganización progresiva de nuestras estructuras mentales. Este proceso resulta de la maduración biológica y, fundamentalmente, de la interacción activa del niño con su entorno. Cada individuo construye su propia comprensión del mundo explorando y actuando sobre él (Terapia Cognitiva, 2015).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección 2: Etapas del Desarrollo -->
+        <div class="section section-2 fade-in fade-in-delay-2">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="section-title-content">
+                        <span class="section-icon">🏗️</span>
+                        <div>La Escalera del Pensamiento</div>
+                    </div>
+                </div>
+            </div>
+            <div class="etapas-visual">
+                <div class="escalera-container">
+                    <h2 class="escalera-title">La Escalera del Pensamiento</h2>
+                    <div class="escalera-image"></div>
+                </div>
+                <div class="etapas-grid">
+                    <div class="etapa-card etapa-sensoriomotora" onclick="toggleEtapa('etapa1')">
+                        <div class="etapa-header">
+                            <span class="etapa-icon">🍼</span>
+                            <div class="etapa-info">
+                                <h3>Sensoriomotora</h3>
+                                <span class="etapa-edad">0-2 años</span>
+                            </div>
+                        </div>
+                        <div class="etapa-description" id="etapa1">
+                            El mundo a través de los sentidos y las acciones. <strong>Logro clave:</strong> la permanencia del objeto (saber que algo existe aunque no se vea).
+                        </div>
+                    </div>
+
+                    <div class="etapa-card etapa-preoperacional" onclick="toggleEtapa('etapa2')">
+                        <div class="etapa-header">
+                            <span class="etapa-icon">🎭</span>
+                            <div class="etapa-info">
+                                <h3>Preoperacional</h3>
+                                <span class="etapa-edad">2-7 años</span>
+                            </div>
+                        </div>
+                        <div class="etapa-description" id="etapa2">
+                            Explosión del lenguaje y el juego simbólico. El pensamiento es <strong>egocéntrico</strong> e intuitivo, no lógico.
+                        </div>
+                    </div>
+
+                    <div class="etapa-card etapa-concretas" onclick="toggleEtapa('etapa3')">
+                        <div class="etapa-header">
+                            <span class="etapa-icon">🧩</span>
+                            <div class="etapa-info">
+                                <h3>Operaciones Concretas</h3>
+                                <span class="etapa-edad">7-11 años</span>
+                            </div>
+                        </div>
+                        <div class="etapa-description" id="etapa3">
+                            Nace el pensamiento lógico sobre lo tangible. Se domina la <strong>conservación</strong>, la clasificación y la seriación.
+                        </div>
+                    </div>
+
+                    <div class="etapa-card etapa-formales" onclick="toggleEtapa('etapa4')">
+                        <div class="etapa-header">
+                            <span class="etapa-icon">🧠</span>
+                            <div class="etapa-info">
+                                <h3>Operaciones Formales</h3>
+                                <span class="etapa-edad">12+ años</span>
+                            </div>
+                        </div>
+                        <div class="etapa-description" id="etapa4">
+                            Capacidad para el pensamiento <strong>abstracto</strong> y el razonamiento hipotético-deductivo. Se puede pensar sobre ideas y posibilidades.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección 3: Procesos de Adaptación -->
+        <div class="section section-3 fade-in fade-in-delay-3">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="section-title-content">
+                        <span class="section-icon">⚙️</span>
+                        <div>El Motor del Aprendizaje: Adaptación y Equilibración</div>
+                    </div>
+                </div>
+            </div>
+            <div class="procesos-grid">
+                <div class="proceso-card proceso-asimilacion" onclick="toggleProceso('asimilacion')">
+                    <span class="proceso-icon">🔵</span>
+                    <h3 class="proceso-title">Asimilación</h3>
+                    <div class="proceso-description" id="asimilacion">
+                        Incorporamos nueva información en nuestros esquemas mentales ya existentes. Es como añadir un nuevo archivo a una carpeta que ya teníamos.
+                    </div>
+                </div>
+
+                <div class="proceso-card proceso-acomodacion" onclick="toggleProceso('acomodacion')">
+                    <span class="proceso-icon">🟠</span>
+                    <h3 class="proceso-title">Acomodación</h3>
+                    <div class="proceso-description" id="acomodacion">
+                        Modificamos nuestros esquemas (o creamos nuevos) para que la nueva información tenga sentido. ¡Es el verdadero momento del aprendizaje!
+                    </div>
+                </div>
+
+                <div class="proceso-card proceso-equilibracion" onclick="toggleProceso('equilibracion')">
+                    <span class="proceso-icon">⚖️</span>
+                    <h3 class="proceso-title">Equilibración</h3>
+                    <div class="proceso-description" id="equilibracion">
+                        El proceso cíclico: Equilibrio → Desequilibrio → Re-equilibrio. Este ciclo se repite constantemente, impulsando el desarrollo cognitivo.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección 4: Características del Pensamiento -->
+        <div class="section section-4 fade-in fade-in-delay-4">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="section-title-content">
+                        <span class="section-icon">🧠</span>
+                        <div>Dentro de la Mente del Niño</div>
+                    </div>
+                </div>
+            </div>
+            <div class="caracteristicas-grid">
+                <div class="caracteristica-card">
+                    <div class="caracteristica-icon">👁️</div>
+                    <h3 class="caracteristica-title">Egocentrismo</h3>
+                    <span class="caracteristica-etapa">Preoperacional</span>
+                    <p class="caracteristica-description">
+                        El niño cree que todos ven el mundo exactamente como él lo ve.
+                    </p>
+                </div>
+
+                <div class="caracteristica-card">
+                    <div class="caracteristica-icon">🎯</div>
+                    <h3 class="caracteristica-title">Centración</h3>
+                    <span class="caracteristica-etapa">Preoperacional</span>
+                    <p class="caracteristica-description">
+                        Se enfoca en un solo aspecto (la altura del agua) e ignora otros (el ancho del vaso).
+                    </p>
+                </div>
+
+                <div class="caracteristica-card">
+                    <div class="caracteristica-icon">💡</div>
+                    <h3 class="caracteristica-title">Animismo</h3>
+                    <span class="caracteristica-etapa">Preoperacional</span>
+                    <p class="caracteristica-description">
+                        La creencia de que los objetos inanimados, como sus juguetes o las nubes, tienen sentimientos y vida.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección 5: Aplicaciones Educativas -->
+        <div class="section section-5 fade-in fade-in-delay-5">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="section-title-content">
+                        <span class="section-icon">📚</span>
+                        <div>Piaget en el Aula</div>
+                    </div>
+                </div>
+            </div>
+            <div class="educacion-content">
+                <div class="educacion-quote">
+                    "La educación no es llenar un recipiente, es encender un fuego."
+                </div>
+                <div class="principios-grid">
+                    <div class="principio-card">
+                        <div class="principio-header">
+                            <span class="principio-icon">👥</span>
+                            <h3 class="principio-title">Enfoque centrado en el niño</h3>
+                        </div>
+                        <p class="principio-description">
+                            El aprendizaje debe ser un proceso activo de descubrimiento. El rol del docente es ser un facilitador que guía y provee materiales.
+                        </p>
+                    </div>
+
+                    <div class="principio-card">
+                        <div class="principio-header">
+                            <span class="principio-icon">⚖️</span>
+                            <h3 class="principio-title">Adecuación al nivel de desarrollo</h3>
+                        </div>
+                        <p class="principio-description">
+                            Las actividades y contenidos deben ser apropiados para la etapa cognitiva del estudiante.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección 6: Quiz Interactivo -->
+        <div class="section section-6 fade-in fade-in-delay-6">
+            <div class="quiz-container">
+                <h2 class="quiz-title">🎯 ¡Ponte a Prueba!</h2>
+                <div class="quiz-question">
+                    Un maestro quiere enseñar sobre la flotación a niños de 8 años (etapa de operaciones concretas). Según Piaget, ¿qué debería hacer?
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectAnswer('A', false)">
+                        A) Dar una clase magistral sobre el principio de Arquímedes
+                    </div>
+                    <div class="quiz-option" onclick="selectAnswer('B', true)">
+                        B) Crear una estación con agua y objetos para que experimenten
+                    </div>
+                </div>
+                <div id="quiz-feedback" class="quiz-feedback">
+                    <strong>¡Correcto!</strong> Piaget abogaría por el aprendizaje activo y por descubrimiento, permitiendo que los niños construyan su conocimiento a través de la experimentación directa.
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Premium -->
+        <div class="footer fade-in fade-in-delay-6">
+            <div class="footer-author">Elaborado por Elaine Gisell Caro Méndez</div>
+            <div class="footer-subtitle">Basado en la Teoría del Desarrollo Cognitivo de Piaget</div>
+            <div class="footer-reference">
+                Terapia Cognitiva. (2015). <em>Teoría del desarrollo cognitivo de Piaget</em>. [Documento PDF].
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para alternar secciones expandibles
+        function toggleSection(sectionId) {
+            const content = document.getElementById(sectionId);
+            const indicator = document.getElementById('indicator' + sectionId.slice(-1));
+            
+            if (content.classList.contains('show')) {
+                content.classList.remove('show');
+                indicator.classList.remove('expanded');
+            } else {
+                content.classList.add('show');
+                indicator.classList.add('expanded');
+            }
+        }
+
+        // Función para alternar etapas
+        function toggleEtapa(etapaId) {
+            const etapa = document.getElementById(etapaId);
+            
+            // Cerrar todas las etapas
+            document.querySelectorAll('.etapa-description').forEach(el => {
+                if (el.id !== etapaId) {
+                    el.classList.remove('show');
+                }
+            });
+            
+            // Alternar la etapa seleccionada
+            etapa.classList.toggle('show');
+        }
+
+        // Función para alternar procesos
+        function toggleProceso(procesoId) {
+            const proceso = document.getElementById(procesoId);
+            
+            // Cerrar todos los procesos
+            document.querySelectorAll('.proceso-description').forEach(el => {
+                if (el.id !== procesoId) {
+                    el.classList.remove('show');
+                }
+            });
+            
+            // Alternar el proceso seleccionado
+            proceso.classList.toggle('show');
+        }
+
+        // Función para el quiz
+        function selectAnswer(option, isCorrect) {
+            const options = document.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('quiz-feedback');
+            
+            // Limpiar selecciones previas
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+                opt.style.pointerEvents = 'auto';
+                opt.style.opacity = '1';
+            });
+            
+            // Marcar la opción seleccionada
+            event.target.classList.add(isCorrect ? 'correct' : 'incorrect');
+            
+            // Mostrar feedback
+            feedback.classList.remove('correct', 'incorrect');
+            feedback.classList.add('show');
+            
+            if (isCorrect) {
+                feedback.classList.add('correct');
+                feedback.innerHTML = '<strong>¡Correcto!</strong> Piaget abogaría por el aprendizaje activo y por descubrimiento, permitiendo que los niños construyan su conocimiento a través de la experimentación directa.';
+            } else {
+                feedback.classList.add('incorrect');
+                feedback.innerHTML = '<strong>Incorrecto.</strong> La respuesta correcta es B. Piaget enfatiza el aprendizaje por descubrimiento y la construcción activa del conocimiento.';
+            }
+            
+            // Deshabilitar opciones después de seleccionar
+            setTimeout(() => {
+                options.forEach(opt => {
+                    opt.style.pointerEvents = 'none';
+                    if (!opt.classList.contains('correct') && !opt.classList.contains('incorrect')) {
+                        opt.style.opacity = '0.5';
+                    }
+                });
+            }, 500);
+        }
+
+        // Efectos de scroll suave
+        function smoothScroll() {
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar efectos de scroll
+            smoothScroll();
+            
+            // Agregar efectos de hover dinámicos
+            const cards = document.querySelectorAll('.etapa-card, .proceso-card, .caracteristica-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Efecto de escritura para el título
+            const title = document.querySelector('.header h1');
+            const text = title.textContent;
+            title.textContent = '';
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < text.length) {
+                    title.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+            
+            setTimeout(typeWriter, 1000);
+        });
+
+        // Efectos de partículas en el header
+        function createParticles() {
+            const header = document.querySelector('.header');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = '4px';
+                particle.style.height = '4px';
+                particle.style.background = 'rgba(255,255,255,0.3)';
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animation = `floating ${3 + Math.random() * 2}s ease-in-out infinite`;
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                header.appendChild(particle);
+            }
+        }
+
+        // Crear partículas después de cargar
+        setTimeout(createParticles, 2000);
+    </script>
+</body>
+</html>
