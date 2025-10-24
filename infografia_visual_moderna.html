@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educación y Desarrollo: Una Perspectiva Integral</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #2d3748;
+            overflow-x: hidden;
+        }
+
+        .infographic-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+        }
+
+        /* Header con diseño impactante */
+        .header {
+            background: linear-gradient(135deg, #4c51bf 0%, #667eea 50%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.05) 10px,
+                rgba(255,255,255,0.05) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .graduation-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Sección de introducción visual */
+        .intro-section {
+            padding: 50px 30px;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            position: relative;
+        }
+
+        .intro-box {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-left: 8px solid #4c51bf;
+            position: relative;
+        }
+
+        .intro-icon {
+            position: absolute;
+            top: -25px;
+            left: 40px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4c51bf, #667eea);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-top: 20px;
+        }
+
+        /* Sección de autores con diseño de tarjetas modernas */
+        .authors-section {
+            padding: 60px 30px;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            color: #2d3748;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #4c51bf, #667eea);
+            border-radius: 2px;
+        }
+
+        .authors-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .author-card {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .author-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .author-card.solano {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .author-card.cirigliano {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .author-header {
+            padding: 30px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .author-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .author-work {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .author-content {
+            background: white;
+            padding: 30px;
+        }
+
+        .ideas-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .idea-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px;
+            background: #f7fafc;
+            border-radius: 15px;
+            border-left: 4px solid;
+        }
+
+        .idea-item.solano {
+            border-left-color: #667eea;
+        }
+
+        .idea-item.cirigliano {
+            border-left-color: #f5576c;
+        }
+
+        .idea-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .idea-number.solano {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .idea-number.cirigliano {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+
+        .idea-text {
+            flex: 1;
+        }
+
+        .idea-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: #2d3748;
+        }
+
+        .idea-desc {
+            font-size: 0.8rem;
+            color: #718096;
+            line-height: 1.4;
+        }
+
+        /* Diagrama central con diseño impactante */
+        .diagram-section {
+            padding: 80px 30px;
+            background: linear-gradient(135deg, #4c51bf 0%, #667eea 50%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diagram-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="90" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="40" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .diagram-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .central-education {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .education-circle {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            color: #2d3748;
+            position: relative;
+            border: 8px solid rgba(255,255,255,0.3);
+        }
+
+        .education-circle::before {
+            content: '★';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 40px;
+            height: 40px;
+            background: #ffd700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #b45309;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .education-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .education-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .education-subtitle {
+            font-size: 0.9rem;
+            color: #718096;
+            font-weight: 400;
+        }
+
+        .arrows-flow {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .flow-arrow {
+            font-size: 3rem;
+            animation: bounce 2s infinite;
+        }
+
+        .flow-arrow:nth-child(2) { animation-delay: 0.3s; }
+        .flow-arrow:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(15px); }
+        }
+
+        .development-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .dev-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            color: #2d3748;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .dev-icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .dev-icon-circle.human {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+        }
+
+        .dev-icon-circle.social {
+            background: linear-gradient(135deg, #ed8936, #dd6b20);
+        }
+
+        .dev-icon-circle.economic {
+            background: linear-gradient(135deg, #4299e1, #3182ce);
+        }
+
+        .dev-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .dev-title.human { color: #38a169; }
+        .dev-title.social { color: #dd6b20; }
+        .dev-title.economic { color: #3182ce; }
+
+        .dev-points {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .dev-points li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .point-icon {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .point-icon.human { background: #38a169; }
+        .point-icon.social { background: #dd6b20; }
+        .point-icon.economic { background: #3182ce; }
+
+        .quote-bubble {
+            background: #f7fafc;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-style: italic;
+            color: #4a5568;
+            border-left: 3px solid #e2e8f0;
+        }
+
+        /* Sección política con diseño de flujo */
+        .political-section {
+            padding: 60px 30px;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+
+        .political-flow {
+            background: white;
+            border-radius: 25px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .flow-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #2d3748;
+        }
+
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .flow-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .step-circle.political {
+            background: linear-gradient(135deg, #4c51bf, #667eea);
+        }
+
+        .step-circle.economic {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+        }
+
+        .step-circle.educational {
+            background: linear-gradient(135deg, #ed8936, #dd6b20);
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 8px;
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+
+        .step-desc {
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        .flow-arrow-right {
+            font-size: 2.5rem;
+            color: #a0aec0;
+        }
+
+        /* Sección de transformación */
+        .transformation-section {
+            padding: 60px 30px;
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+        }
+
+        .transformation-content {
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .transform-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .transform-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .transform-card {
+            background: rgba(255,255,255,0.95);
+            color: #2d3748;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .transform-author {
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .author-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .author-dot.solano { background: #667eea; }
+        .author-dot.cirigliano { background: #f5576c; }
+
+        .highlight-banner {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #744210;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Conclusión impactante */
+        .conclusion-section {
+            padding: 60px 30px;
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .conclusion-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            padding: 50px 40px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .conclusion-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        .conclusion-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Referencias elegantes */
+        .references-section {
+            padding: 40px 30px;
+            background: #f7fafc;
+            text-align: center;
+        }
+
+        .references-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #2d3748;
+        }
+
+        .reference-item {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title { font-size: 1.8rem; }
+            .authors-container { grid-template-columns: 1fr; }
+            .development-cards { grid-template-columns: 1fr; }
+            .flow-diagram { flex-direction: column; }
+            .flow-arrow-right { transform: rotate(90deg); }
+            .transform-cards { grid-template-columns: 1fr; }
+            .infographic-container { margin: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic-container">
+        <!-- Header impactante -->
+        <div class="header">
+            <div class="header-content">
+                <div class="graduation-icon">
+                    <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+                    </svg>
+                </div>
+                <h1 class="main-title">EDUCACIÓN Y DESARROLLO</h1>
+                <p class="subtitle">Una Perspectiva Integral • Solano (2021) & Cirigliano (2025)</p>
+                <p style="margin-top: 15px; font-size: 1rem; font-weight: 600; opacity: 0.95;">Elaborado por: Elaine Gisell Caro Méndez</p>
+            </div>
+        </div>
+
+        <!-- Introducción visual -->
+        <div class="intro-section">
+            <div class="intro-box">
+                <div class="intro-icon">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/>
+                    </svg>
+                </div>
+                <h2 style="font-size: 1.8rem; font-weight: 700; color: #4c51bf;">💡 La Educación como Pilar del Desarrollo</h2>
+                <p class="intro-text">
+                    Los sistemas educativos no solo transmiten conocimientos, sino que <strong>moldean subjetividades</strong>, 
+                    <strong>determinan estructuras sociales</strong> y <strong>configuran el desarrollo económico</strong> de las naciones.
+                </p>
+            </div>
+        </div>
+
+        <!-- Autores con diseño moderno -->
+        <div class="authors-section">
+            <h2 class="section-title">📚 PERSPECTIVAS DE LOS AUTORES</h2>
+            
+            <div class="authors-container">
+                <!-- Solano -->
+                <div class="author-card solano">
+                    <div class="author-header">
+                        <h3 class="author-name">SOLANO (2021)</h3>
+                        <p class="author-work">"Pensar la sociedad a través de la educación"</p>
+                    </div>
+                    <div class="author-content">
+                        <div class="ideas-grid">
+                            <div class="idea-item solano">
+                                <div class="idea-number solano">1</div>
+                                <div class="idea-text">
+                                    <div class="idea-title">🏛️ Factor Político</div>
+                                    <div class="idea-desc">No es neutral, está imbricada con el Estado</div>
+                                </div>
+                            </div>
+                            <div class="idea-item solano">
+                                <div class="idea-number solano">2</div>
+                                <div class="idea-text">
+                                    <div class="idea-title">⚖️ Doble Función</div>
+                                    <div class="idea-desc">Transmite valores + genera capital humano</div>
+                                </div>
+                            </div>
+                            <div class="idea-item solano">
+                                <div class="idea-number solano">3</div>
+                                <div class="idea-text">
+                                    <div class="idea-title">🧠 Subjetividad</div>
+                                    <div class="idea-desc">Construye identidad y percepción social</div>
+                                </div>
+                            </div>
+                            <div class="idea-item solano">
+                                <div class="idea-number solano">4</div>
+                                <div class="idea-text">
+                                    <div class="idea-title">🏢 Valores Hegemónicos</div>
+                                    <div class="idea-desc">Competencia, eficiencia, productividad</div>
+                                </div>
+                            </div>
+                            <div class="idea-item solano">
+                                <div class="idea-number solano">5</div>
+                                <div class="idea-text">
+                                    <div class="idea-title">🔄 Potencial Transformador</div>
+                                    <div class="idea-desc">Puede generar igualdad y justicia</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cirigliano -->
+                <div class="author-card cirigliano">
+                    <div class="author-header">
+                        <h3 class="author-name">CIRIGLIANO (2025)</h3>
+                        <p class="author-work">"Economía y educación"</p>
+                    </div>
+                    <div class="author-content">
+                        <div class="ideas-grid">
+                            <div class="idea-item cirigliano">
+                                <div class="idea-number cirigliano">1</div>
+                                <div class="idea-text">
+                                    <div class="idea-title">🔗 Correspondencia</div>
+                                    <div class="idea-desc">Sistema económico = sistema educativo</div>
+                                </div>
+                            </div>
+                            <div class="idea-item cirigliano">
+                                <div class="idea-number cirigliano">2</div>
+                                <div class="idea-text">
+                                    <div class="idea-title">⚙️ Coordinación</div>
+                                    <div class="idea-desc">Estructuras se limitan mutuamente</div>
+                                </div>
+                            </div>
+                            <div class="idea-item cirigliano">
+                                <div class="idea-number cirigliano">3</div>
+                                <div class="idea-text">
+                                    <div class="idea-title">🎯 Subordinación</div>
+                                    <div class="idea-desc">Ambas responden al proyecto político</div>
+                                </div>
+                            </div>
+                            <div class="idea-item cirigliano">
+                                <div class="idea-number cirigliano">4</div>
+                                <div class="idea-text">
+                                    <div class="idea-title">🇦🇷 Caso Argentino</div>
+                                    <div class="idea-desc">Sistema para economía dependiente</div>
+                                </div>
+                            </div>
+                            <div class="idea-item cirigliano">
+                                <div class="idea-number cirigliano">5</div>
+                                <div class="idea-text">
+                                    <div class="idea-title">💰 Inversión</div>
+                                    <div class="idea-desc">Los países tienen la educación que pagan</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagrama central impactante -->
+        <div class="diagram-section">
+            <div class="diagram-content">
+                <h2 class="section-title" style="color: white; margin-bottom: 50px;">🎯 EDUCACIÓN: MOTOR DEL DESARROLLO</h2>
+                
+                <div class="central-education">
+                    <div class="education-circle">
+                        <svg class="education-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+                        </svg>
+                        <div class="education-title">EDUCACIÓN</div>
+                        <div class="education-subtitle">Factor Determinante</div>
+                    </div>
+                </div>
+
+                <div class="arrows-flow">
+                    <div class="flow-arrow">⬇</div>
+                    <div class="flow-arrow">⬇</div>
+                    <div class="flow-arrow">⬇</div>
+                </div>
+
+                <div class="development-cards">
+                    <!-- Desarrollo Humano -->
+                    <div class="dev-card">
+                        <div class="dev-icon-circle human">
+                            <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                            </svg>
+                        </div>
+                        <h3 class="dev-title human">DESARROLLO HUMANO</h3>
+                        <ul class="dev-points">
+                            <li><span class="point-icon human"></span>Conforma subjetividad</li>
+                            <li><span class="point-icon human"></span>Determina valores</li>
+                            <li><span class="point-icon human"></span>Forma potencial humano</li>
+                            <li><span class="point-icon human"></span>Desarrolla capacidades</li>
+                        </ul>
+                        <div class="quote-bubble">
+                            "Construye la manera en que las personas se perciben" - Solano
+                        </div>
+                    </div>
+
+                    <!-- Desarrollo Social -->
+                    <div class="dev-card">
+                        <div class="dev-icon-circle social">
+                            <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2.01.99L12 11l-1.99-2.01A2.5 2.5 0 0 0 8 8H5.46c-.8 0-1.54.37-2.01.99L1 16h2.5v6h2v-6h2.5l1.5-4.5L12 14l2.5-2.5L16 16h2.5v6h2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="dev-title social">DESARROLLO SOCIAL</h3>
+                        <ul class="dev-points">
+                            <li><span class="point-icon social"></span>Integración política</li>
+                            <li><span class="point-icon social"></span>Control social</li>
+                            <li><span class="point-icon social"></span>Cohesión social</li>
+                            <li><span class="point-icon social"></span>Movilidad/estratificación</li>
+                        </ul>
+                        <div class="quote-bubble">
+                            "Perpetuó la división de clases" - Cirigliano
+                        </div>
+                    </div>
+
+                    <!-- Desarrollo Económico -->
+                    <div class="dev-card">
+                        <div class="dev-icon-circle economic">
+                            <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                            </svg>
+                        </div>
+                        <h3 class="dev-title economic">DESARROLLO ECONÓMICO</h3>
+                        <ul class="dev-points">
+                            <li><span class="point-icon economic"></span>Genera capital humano</li>
+                            <li><span class="point-icon economic"></span>Forma productores</li>
+                            <li><span class="point-icon economic"></span>Forma consumidores</li>
+                            <li><span class="point-icon economic"></span>Aumenta nivel de vida</li>
+                        </ul>
+                        <div class="quote-bubble">
+                            "Alimenta la estructura económica" - Cirigliano
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flujo político -->
+        <div class="political-section">
+            <div class="political-flow">
+                <h2 class="flow-title">🏛️ DIMENSIÓN POLÍTICA</h2>
+                <div class="flow-diagram">
+                    <div class="flow-step">
+                        <div class="step-circle political">
+                            <svg class="step-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>
+                            </svg>
+                            <div class="step-label">PROYECTO POLÍTICO</div>
+                        </div>
+                        <h4 class="step-title">Idea Central</h4>
+                        <p class="step-desc">Voluntad operativa del Estado</p>
+                    </div>
+
+                    <div class="flow-arrow-right">➤</div>
+
+                    <div class="flow-step">
+                        <div class="step-circle economic">
+                            <svg class="step-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                            </svg>
+                            <div class="step-label">ESTRUCTURA ECONÓMICA</div>
+                        </div>
+                        <h4 class="step-title">Sistema Productivo</h4>
+                        <p class="step-desc">Producción y consumo</p>
+                    </div>
+
+                    <div class="flow-arrow-right">➤</div>
+
+                    <div class="flow-step">
+                        <div class="step-circle educational">
+                            <svg class="step-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+                            </svg>
+                            <div class="step-label">ESTRUCTURA EDUCATIVA</div>
+                        </div>
+                        <h4 class="step-title">Sistema Formativo</h4>
+                        <p class="step-desc">Formación ciudadana</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transformación -->
+        <div class="transformation-section">
+            <div class="transformation-content">
+                <h2 class="transform-title">
+                    <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
+                    </svg>
+                    POTENCIAL TRANSFORMADOR
+                </h2>
+                
+                <div class="transform-cards">
+                    <div class="transform-card">
+                        <h4 class="transform-author">
+                            <span class="author-dot solano"></span>
+                            SOLANO (2021)
+                        </h4>
+                        <p>Vislumbra modificar objetivos educativos para construir relaciones más <strong>igualitarias y justas</strong>.</p>
+                    </div>
+                    
+                    <div class="transform-card">
+                        <h4 class="transform-author">
+                            <span class="author-dot cirigliano"></span>
+                            CIRIGLIANO (2025)
+                        </h4>
+                        <p>Necesidad de reajustar estructuras educativas, abandonando esquemas que perpetúan la <strong>dependencia</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-banner">
+                    ⚡ A pesar del carácter hegemónico, ambos reconocen el potencial transformador de la educación
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusión impactante -->
+        <div class="conclusion-section">
+            <div class="conclusion-box">
+                <h2 class="conclusion-title">🎯 CONCLUSIÓN</h2>
+                <p class="conclusion-text">
+                    La educación es un <strong>FACTOR DETERMINANTE</strong> para el desarrollo integral, 
+                    actuando como puente entre aspiraciones políticas, necesidades económicas y formación ciudadana. 
+                    Su efectividad depende de la <strong>COHERENCIA</strong> entre estructura educativa, 
+                    proyecto político y condiciones económicas reales.
+                </p>
+            </div>
+        </div>
+
+        <!-- Autor -->
+        <div style="padding: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
+            <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 5px;">📝 Elaborado por</p>
+            <h3 style="font-size: 1.8rem; font-weight: 800;">Elaine Gisell Caro Méndez</h3>
+        </div>
+
+        <!-- Referencias elegantes -->
+        <div class="references-section">
+            <h3 class="references-title">📚 REFERENCIAS</h3>
+            <div class="reference-item">
+                <strong>Cirigliano, G. F. J. (2025).</strong> <em>Educación y futuro</em>. UNIPE: Editorial Universitaria.
+            </div>
+            <div class="reference-item">
+                <strong>Solano Vázquez, E. (2021).</strong> Pensar la sociedad a través de la educación. 
+                <em>Diálogos sobre educación. Temas actuales en investigación educativa</em>, <em>12</em>(23). 
+                https://doi.org/10.32870/dse.v0i23.928
+            </div>
+        </div>
+    </div>
+</body>
+</html>
