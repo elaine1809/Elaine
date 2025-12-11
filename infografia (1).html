@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delimitación del Problema de Investigación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(to bottom, #e3f2fd 0%, #bbdefb 50%, #90caf9 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            color: #1565c0;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .header .subtitle {
+            color: #424242;
+            font-size: 1.1em;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .header .citation {
+            color: #666;
+            font-size: 0.85em;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .section {
+            background: white;
+            margin: 25px 0;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .section-title {
+            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            display: inline-block;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+
+        .section-title-orange {
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+        }
+
+        .problem-title {
+            background: #e3f2fd;
+            padding: 20px;
+            border-left: 5px solid #1565c0;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .problem-title h3 {
+            color: #1565c0;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .content-box {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #ff9800;
+        }
+
+        .content-box p {
+            color: #424242;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .column-box {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #ff9800;
+        }
+
+        .column-box h4 {
+            color: #e65100;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .column-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .column-box li {
+            color: #424242;
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .column-box li:before {
+            content: "▸";
+            color: #ff9800;
+            font-weight: bold;
+            position: absolute;
+            left: 5px;
+        }
+
+        .timeline {
+            background: #e8eaf6;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #3f51b5;
+            border-radius: 5px;
+        }
+
+        .timeline-item strong {
+            color: #3f51b5;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .location-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .location-box .location-item {
+            display: inline-block;
+            margin: 10px 20px;
+            color: #e65100;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #ff9800;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .themes-box {
+            background: #e1f5fe;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .themes-box h4 {
+            color: #01579b;
+            margin-bottom: 15px;
+        }
+
+        .themes-box ol {
+            color: #424242;
+            padding-left: 25px;
+            line-height: 1.8;
+        }
+
+        .citation-box {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .highlight {
+            background: #fff9c4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .section-title {
+                font-size: 1.2em;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="data:image/png;base64,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" alt="Universidad Cuauhtémoc" style="max-width: 300px; height: auto;">
+            </div>
+            <h1>Delimitación del Problema de Investigación</h1>
+            <div class="subtitle">
+                Estilos de aprendizaje, estrategias de aprendizaje y su relación con el uso de las TIC en estudiantes de educación secundaria
+            </div>
+            <div class="citation">
+                (Portuguez Castro, 2021; Guerrero & Fernández, 2021)
+            </div>
+        </div>
+
+        <!-- SECCIÓN 1: CARACTERIZACIÓN DEL PROBLEMA -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">1</span> Caracterización del Problema
+            </div>
+            
+            <div class="problem-title">
+                <h3>Título del Problema</h3>
+                <p>Estilos de aprendizaje, estrategias de aprendizaje y su relación con el uso de las TIC en estudiantes de educación secundaria</p>
+            </div>
+
+            <div class="content-box">
+                <h4 style="color: #d84315; margin-bottom: 12px;">📌 Problema Social</h4>
+                <p>
+                    El incremento en el uso de dispositivos tecnológicos en la población estudiantil de educación secundaria ha generado una brecha entre la frecuencia de uso y el aprovechamiento pedagógico efectivo. Los estudiantes utilizan tecnología de manera instrumental y poco crítica, accediendo a fuentes poco confiables como Wikipedia, Yahoo Respuestas o El Rincón del Vago, gestionando información de forma desorganizada y aplicando estrategias de aprendizaje limitadas que no responden a sus estilos cognitivos individuales. Esta situación ha conllevado al bajo rendimiento en competencias informacionales, a la construcción superficial de conocimiento y a la pérdida del potencial pedagógico de las TIC en contextos educativos formales.
+                </p>
+            </div>
+
+            <div class="themes-box">
+                <h4>🔍 Temas de Interés Relacionados:</h4>
+                <ol>
+                    <li>Estilos de aprendizaje en educación secundaria</li>
+                    <li>Estrategias de aprendizaje mediadas por TIC</li>
+                    <li>Competencias informacionales en estudiantes adolescentes</li>
+                    <li>Uso pedagógico de tecnologías digitales</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2: DELIMITACIÓN CONCEPTUAL -->
+        <div class="section">
+            <div class="section-title section-title-orange">
+                <span class="icon">2</span> Delimitación Conceptual
+            </div>
+
+            <div class="content-box">
+                <h4 style="color: #d84315; margin-bottom: 12px;">📚 Marco Teórico</h4>
+                <p>
+                    Desde la perspectiva histórico-cultural vigotskiana, los estilos de aprendizaje se comprenden como <span class="highlight">formas relativamente estables que expresan el carácter único de la personalidad</span>, integrando dimensiones cognitivas y afectivas en el proceso de construcción del conocimiento (Cabrera & Fariñas, 2005). Esta conceptualización supera las visiones cognitivistas tradicionales al reconocer que el aprendizaje es un proceso humanizador situado en contextos sociales específicos.
+                </p>
+            </div>
+
+            <div class="two-columns">
+                <div class="column-box">
+                    <h4>📊 Dimensiones de los Estilos de Aprendizaje</h4>
+                    <ul>
+                        <li>Formas de percibir información (visual, verbal-auditivo)</li>
+                        <li>Formas de procesar información (global, analítico)</li>
+                        <li>Formas de planificar el tiempo (planificado, espontáneo)</li>
+                        <li>Formas de orientarse socialmente (cooperativo, individual)</li>
+                    </ul>
+                    <div class="citation-box">
+                        Cabrera & Fariñas (2005)
+                    </div>
+                </div>
+
+                <div class="column-box">
+                    <h4>🔬 Hallazgos Empíricos Clave</h4>
+                    <ul>
+                        <li>Predomina el estilo de aprendizaje ACTIVO en secundaria</li>
+                        <li>Uso frecuente de redes sociales para intercambio académico</li>
+                        <li>Gestión desorganizada de información digital</li>
+                        <li>Necesidad de fortalecer competencias informacionales</li>
+                    </ul>
+                    <div class="citation-box">
+                        Zambrano et al. (2018)
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-box" style="background: #ffebee; border-left-color: #c62828;">
+                <h4 style="color: #c62828; margin-bottom: 12px;">⚠️ Vacío de Conocimiento Identificado</h4>
+                <p>
+                    Zambrano et al. (2018) identificaron que los estudiantes de secundaria con estilo activo predominante utilizan las TIC de manera espontánea pero desorganizada, mientras que aquellos con estilos pragmático y reflexivo desarrollan estrategias más sistemáticas de gestión de información. Sin embargo, persiste la necesidad de diseñar estrategias pedagógicas que articulen intencionadamente los estilos de aprendizaje individuales con el uso académico y crítico de las tecnologías digitales, fortaleciendo competencias informacionales y metacognitivas contextualizadas.
+                </p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3: DELIMITACIÓN CONTEXTUAL Y POBLACIONAL -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">3</span> Delimitación Contextual y Poblacional
+            </div>
+
+            <div class="two-columns">
+                <div class="column-box" style="background: #e8f5e9; border-color: #4caf50;">
+                    <h4 style="color: #2e7d32;">👥 Población Estudiantil</h4>
+                    <ul>
+                        <li><strong>Edad:</strong> 13 a 15 años</li>
+                        <li><strong>Nivel:</strong> Grado octavo de bachillerato</li>
+                        <li><strong>Institución:</strong> Instituto Técnico Industrial de Facatativá</li>
+                        <li><strong>Ubicación:</strong> Facatativá, Cundinamarca</li>
+                        <li><strong>Características:</strong> Acceso frecuente a dispositivos tecnológicos (computadores, tabletas, smartphones)</li>
+                        <li><strong>Estilo predominante:</strong> Activo (espontaneidad, improvisación)</li>
+                        <li><strong>Uso tecnológico:</strong> Redes sociales para intercambio académico</li>
+                    </ul>
+                </div>
+
+                <div class="column-box" style="background: #fce4ec; border-color: #e91e63;">
+                    <h4 style="color: #c2185b;">👨‍🏫 Población Docente</h4>
+                    <ul>
+                        <li>Docentes de educación secundaria</li>
+                        <li>Necesidad de fortalecer competencias en reconocimiento de estilos de aprendizaje</li>
+                        <li>Diseño de estrategias pedagógicas mediadas por TIC</li>
+                        <li>Atención a la diversidad cognitiva del aula</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <h4 style="color: #d84315; margin-bottom: 12px;">🏫 Contexto Institucional</h4>
+                <p>
+                    El Instituto Técnico Industrial de Facatativá es una institución educativa del sector público ubicada en el municipio de Facatativá, Cundinamarca, que ha incorporado TIC en sus procesos de enseñanza-aprendizaje pero enfrenta el desafío de articular estas herramientas con las particularidades cognitivas de los estudiantes de grado octavo. El contexto está claramente identificado en la realidad educativa donde convergen transformaciones tecnológicas aceleradas y la necesidad de reconocer la heterogeneidad cognitiva de la población estudiantil adolescente en formación técnica.
+                </p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 4: DELIMITACIÓN ESPACIAL -->
+        <div class="section">
+            <div class="section-title section-title-orange">
+                <span class="icon">4</span> Delimitación Espacial
+            </div>
+
+            <div class="location-box">
+                <div class="location-item">
+                    🌎 <strong>País:</strong> Colombia
+                </div>
+                <div class="location-item">
+                    📍 <strong>Departamento:</strong> Cundinamarca
+                </div>
+                <div class="location-item">
+                    🏙️ <strong>Municipio:</strong> Facatativá
+                </div>
+            </div>
+
+            <div class="content-box">
+                <p style="text-align: center;">
+                    <strong>Institución:</strong> Instituto Técnico Industrial de Facatativá<br>
+                    <strong>Tipo de institución:</strong> Educación secundaria técnica del sector público<br>
+                    <strong>Grado:</strong> Octavo de bachillerato
+                </p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 5: DELIMITACIÓN TEMPORAL -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">5</span> Delimitación Temporal
+            </div>
+
+            <div class="timeline">
+                <h4 style="color: #3f51b5; margin-bottom: 15px;">📅 Antecedentes Históricos</h4>
+                
+                <div class="timeline-item">
+                    <strong>Años 50</strong>
+                    Surgimiento del concepto de estilos cognitivos en la psicología cognitiva (Witkin y otros psicólogos cognitivistas).
+                </div>
+
+                <div class="timeline-item">
+                    <strong>Segunda mitad del siglo XX</strong>
+                    Desarrollo del concepto "estilos de aprendizaje" en pedagogía, incorporando dimensiones afectivas y sociales.
+                </div>
+
+                <div class="timeline-item">
+                    <strong>2012-2022</strong>
+                    Investigaciones sobre la relación entre estilos de aprendizaje y TIC en contextos educativos.
+                </div>
+
+                <div class="timeline-item">
+                    <strong>2020-2021 (Pandemia COVID-19)</strong>
+                    Aceleración de la incorporación de TIC en educación, evidenciando la brecha entre uso tecnológico y aprovechamiento pedagógico.
+                </div>
+            </div>
+
+            <div class="content-box">
+                <h4 style="color: #d84315; margin-bottom: 12px;">⏳ Evolución del Problema</h4>
+                <p>
+                    La incorporación masiva de TIC en educación secundaria durante las últimas dos décadas se realizó sin considerar sistemáticamente los estilos de aprendizaje de los estudiantes. La pandemia de COVID-19 aceleró esta incorporación, evidenciando la brecha entre uso tecnológico y aprovechamiento pedagógico, lo que hace urgente el desarrollo de estrategias que integren ambas dimensiones.
+                </p>
+            </div>
+
+            <div class="timeline">
+                <h4 style="color: #3f51b5; margin-bottom: 15px;">🎯 Cronograma Proyectado de Investigación</h4>
+                
+                <div class="timeline-item" style="border-left-color: #4caf50;">
+                    <strong>Fase 1 (Primer semestre)</strong>
+                    Profundización teórica sobre estilos de aprendizaje desde la perspectiva histórico-cultural. Caracterización de la población estudiantil en el contexto de Facatativá.
+                </div>
+
+                <div class="timeline-item" style="border-left-color: #ff9800;">
+                    <strong>Fase 2 (Segundo semestre)</strong>
+                    Aplicación de instrumentos de evaluación: CHAEA (Cuestionario de Estilos de Aprendizaje) y CEVEAPEU (Cuestionario de Estrategias de Aprendizaje). Observación de prácticas de uso de TIC.
+                </div>
+
+                <div class="timeline-item" style="border-left-color: #2196f3;">
+                    <strong>Fase 3 (Tercer semestre)</strong>
+                    Análisis de datos cualitativos y cuantitativos. Construcción de hallazgos sobre la relación entre estilos, estrategias y uso de TIC.
+                </div>
+
+                <div class="timeline-item" style="border-left-color: #9c27b0;">
+                    <strong>Fase 4 (Cuarto semestre)</strong>
+                    Diseño de propuestas pedagógicas contextualizadas. Socialización de resultados y cierre del proceso investigativo.
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p><strong>Elaborado por:</strong> Elaine Gisell Caro Méndez</p>
+            <p><strong>Programa:</strong> Doctorado en Ciencias de la Educación</p>
+            <p><strong>Docente:</strong> Dra. Gloria Susana Velasco López</p>
+            <p style="margin-top: 15px; font-size: 0.85em;">
+                <strong>Referencias principales:</strong><br>
+                Cabrera, J. S., & Fariñas, G. (2005). El estudio de los estilos de aprendizaje desde una perspectiva vigostkiana.<br>
+                Zambrano, J., Arango, L., & Lezcano, M. (2018). Estilos de aprendizaje, estrategias de aprendizaje y su relación con el uso de las TIC.<br>
+                Portuguez Castro, M. (2021). Delimitando el tema de interés: pautas para un abordaje preciso del problema de investigación.<br>
+                Guerrero & Fernández (2021). Formular un problema de investigación: una propuesta y sus limitaciones.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
