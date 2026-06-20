@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía Comparativa: Lo cualitativo en perspectiva paradigmática</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(to bottom, #f0f4ff, #ffffff, #e0e7ff);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(to right, #2563eb, #4f46e5);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        header .container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        header h1 {
+            font-size: 2.25rem;
+            font-weight: bold;
+        }
+
+        header p {
+            color: #dbeafe;
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        /* Segment Containers */
+        .segment-container {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-top: 4px solid;
+        }
+
+        .segment-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 2px solid;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .segment-icon {
+            width: 1.75rem;
+            height: 1.75rem;
+            flex-shrink: 0;
+        }
+
+        /* Segment 1 */
+        .segment-1 {
+            border-top-color: #22c55e;
+        }
+
+        .segment-1 .segment-header {
+            background: linear-gradient(to right, #f0fdf4, #d1fae5);
+            border-bottom-color: #bbf7d0;
+            color: #111827;
+        }
+
+        .segment-1 .segment-icon {
+            color: #16a34a;
+        }
+
+        /* Segment 2 */
+        .segment-2 {
+            border-top-color: #4f46e5;
+        }
+
+        .segment-2 .segment-header {
+            background: linear-gradient(to right, #f0f4ff, #dbeafe);
+            border-bottom-color: #bfdbfe;
+            color: #111827;
+        }
+
+        .segment-2 .segment-icon {
+            color: #4338ca;
+        }
+
+        /* Segment 3 */
+        .segment-3 {
+            border-top-color: #14b8a6;
+        }
+
+        .segment-3 .segment-header {
+            background: linear-gradient(to right, #f0fdfa, #ccfbf1);
+            border-bottom-color: #99f6e4;
+            color: #111827;
+        }
+
+        .segment-3 .segment-icon {
+            color: #0d9488;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Characteristic Cards */
+        .characteristic {
+            border-left: 4px solid;
+            padding-left: 1.5rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .characteristic-1 { border-left-color: #22c55e; }
+        .characteristic-2 { border-left-color: #3b82f6; }
+        .characteristic-3 { border-left-color: #a855f7; }
+        .characteristic-4 { border-left-color: #f97316; }
+
+        .characteristic h3 {
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .characteristic-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .characteristic-1 .characteristic-number { background-color: #22c55e; }
+        .characteristic-2 .characteristic-number { background-color: #3b82f6; }
+        .characteristic-3 .characteristic-number { background-color: #a855f7; }
+        .characteristic-4 .characteristic-number { background-color: #f97316; }
+
+        .characteristic p {
+            color: #374151;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Paradigm Cards */
+        .paradigm-card {
+            border: 2px solid;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+        }
+
+        .paradigm-positivism {
+            background-color: #fef2f2;
+            border-color: #fecaca;
+        }
+
+        .paradigm-postpositivism {
+            background-color: #fff7ed;
+            border-color: #fed7aa;
+        }
+
+        .paradigm-interpretativism {
+            background-color: #eff6ff;
+            border-color: #bfdbfe;
+        }
+
+        .paradigm-critical {
+            background-color: #faf5ff;
+            border-color: #e9d5ff;
+        }
+
+        .paradigm-card h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .paradigm-positivism h3 { color: #7f1d1d; }
+        .paradigm-postpositivism h3 { color: #7c2d12; }
+        .paradigm-interpretativism h3 { color: #1e3a8a; }
+        .paradigm-critical h3 { color: #581c87; }
+
+        .paradigm-section {
+            margin-bottom: 0.75rem;
+        }
+
+        .paradigm-section:not(:last-child) {
+            border-bottom: 1px solid;
+            padding-bottom: 0.75rem;
+        }
+
+        .paradigm-positivism .paradigm-section:not(:last-child) { border-bottom-color: #fecaca; }
+        .paradigm-postpositivism .paradigm-section:not(:last-child) { border-bottom-color: #fed7aa; }
+        .paradigm-interpretativism .paradigm-section:not(:last-child) { border-bottom-color: #bfdbfe; }
+        .paradigm-critical .paradigm-section:not(:last-child) { border-bottom-color: #e9d5ff; }
+
+        .paradigm-label {
+            font-weight: bold;
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .paradigm-positivism .paradigm-label { color: #991b1b; }
+        .paradigm-postpositivism .paradigm-label { color: #92400e; }
+        .paradigm-interpretativism .paradigm-label { color: #1e40af; }
+        .paradigm-critical .paradigm-label { color: #6b21a8; }
+
+        .paradigm-text {
+            color: #374151;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        /* Rigor Cards */
+        .rigor-card {
+            border-top: 4px solid;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+        }
+
+        .rigor-credibilidad {
+            background-color: #f0fdfa;
+            border-top-color: #14b8a6;
+        }
+
+        .rigor-transferibilidad {
+            background-color: #f0f9ff;
+            border-top-color: #06b6d4;
+        }
+
+        .rigor-dependencia {
+            background-color: #eff6ff;
+            border-top-color: #3b82f6;
+        }
+
+        .rigor-confirmabilidad {
+            background-color: #f0f4ff;
+            border-top-color: #4f46e5;
+        }
+
+        .rigor-card h4 {
+            font-size: 1.125rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+        }
+
+        .rigor-credibilidad h4 { color: #134e4a; }
+        .rigor-transferibilidad h4 { color: #164e63; }
+        .rigor-dependencia h4 { color: #1e3a8a; }
+        .rigor-confirmabilidad h4 { color: #312e81; }
+
+        .rigor-description {
+            color: #374151;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .rigor-strategies {
+            font-size: 0.75rem;
+            font-weight: 600;
+            background-color: white;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+        }
+
+        .rigor-credibilidad .rigor-strategies { color: #0d9488; }
+        .rigor-transferibilidad .rigor-strategies { color: #0891b2; }
+        .rigor-dependencia .rigor-strategies { color: #1e40af; }
+        .rigor-confirmabilidad .rigor-strategies { color: #3730a3; }
+
+        /* Important Note */
+        .important-note {
+            background: linear-gradient(to right, #ccfbf1, #dbeafe);
+            border-left: 4px solid #0d9488;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 0 2rem 2rem 2rem;
+            color: #1f2937;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .important-note strong {
+            color: #0d9488;
+        }
+
+        /* Synthesis Section */
+        .synthesis {
+            background: linear-gradient(to right, #2563eb, #4f46e5);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .synthesis h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .synthesis p {
+            color: #dbeafe;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111827;
+            color: #d1d5db;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+
+        footer p {
+            margin: 0.25rem 0;
+        }
+
+        footer p:first-child {
+            font-weight: 600;
+        }
+
+        footer p:last-child {
+            color: #6b7280;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .segment-header {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div>
+                <h1>📚 Infografía Comparativa</h1>
+                <p>Lo cualitativo en perspectiva paradigmática</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- SEGMENT 1: CARACTERÍSTICAS DISTINTIVAS -->
+            <section>
+                <div class="segment-container segment-1">
+                    <div class="segment-header">
+                        <span class="segment-icon">🎯</span>
+                        Segmento 1: Características Distintivas de la Investigación Cualitativa
+                    </div>
+                    
+                    <div class="content-grid">
+                        <!-- Característica 1 -->
+                        <div class="characteristic characteristic-1">
+                            <h3>
+                                <span class="characteristic-number">1</span>
+                                Flexibilidad y Diseño Emergente
+                            </h3>
+                            <p>
+                                El diseño de investigación se adapta y evoluciona durante el proceso. No está completamente predeterminado, 
+                                sino que emerge de la interacción con el campo y los datos recolectados, permitiendo ajustes según lo que se descubre.
+                            </p>
+                        </div>
+
+                        <!-- Característica 2 -->
+                        <div class="characteristic characteristic-2">
+                            <h3>
+                                <span class="characteristic-number">2</span>
+                                Contextualidad e Importancia del Contexto
+                            </h3>
+                            <p>
+                                La investigación se realiza en contextos naturales. Los fenómenos no pueden aislarse de su entorno social, 
+                                cultural e histórico sin perder su significado y riqueza interpretativa.
+                            </p>
+                        </div>
+
+                        <!-- Característica 3 -->
+                        <div class="characteristic characteristic-3">
+                            <h3>
+                                <span class="characteristic-number">3</span>
+                                Rol Activo del Investigador como Instrumento
+                            </h3>
+                            <p>
+                                El investigador actúa como instrumento de recolección de datos. Su presencia, interpretaciones, reflexiones 
+                                y sensibilidades son parte integral del proceso investigativo.
+                            </p>
+                        </div>
+
+                        <!-- Característica 4 -->
+                        <div class="characteristic characteristic-4">
+                            <h3>
+                                <span class="characteristic-number">4</span>
+                                Profundidad sobre Cantidad
+                            </h3>
+                            <p>
+                                Prioriza la comprensión profunda de fenómenos particulares sobre la generalización estadística. 
+                                Busca significados, interpretaciones y construcciones de sentido en contextos específicos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEGMENT 2: PARADIGMAS EPISTEMOLÓGICOS -->
+            <section>
+                <div class="segment-container segment-2">
+                    <div class="segment-header">
+                        <span class="segment-icon">📖</span>
+                        Segmento 2: Paradigmas Epistemológicos Comparados
+                    </div>
+
+                    <div class="content-grid">
+                        <!-- Positivismo -->
+                        <div class="paradigm-card paradigm-positivism">
+                            <h3>Positivismo</h3>
+                            <div class="paradigm-section">
+                                <p class="paradigm-label">Concepción de la Realidad:</p>
+                                <p class="paradigm-text">
+                                    Realidad única, objetiva e independiente del observador. Existe una verdad absoluta que puede ser descubierta mediante métodos rigurosos.
+                                </p>
+                            </div>
+                            <div class="paradigm-section">
+                                <p class="paradigm-label">Propósito Principal:</p>
+                                <p class="paradigm-text">
+                                    Verificación de hipótesis, predicción y control de fenómenos mediante métodos cuantitativos y análisis estadístico.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Postpositivismo -->
+                        <div class="paradigm-card paradigm-postpositivism">
+                            <h3>Postpositivismo</h3>
+                            <div class="paradigm-section">
+                                <p class="paradigm-label">Concepción de la Realidad:</p>
+                                <p class="paradigm-text">
+                                    Realidad existe pero es imperfectamente aprehensible. Reconoce limitaciones del observador, la medición y el conocimiento.
+                                </p>
+                            </div>
+                            <div class="paradigm-section">
+                                <p class="paradigm-label">Propósito Principal:</p>
+                                <p class="paradigm-text">
+                                    Comprobación crítica de hipótesis, búsqueda de falsedad. Mantiene énfasis cuantitativo pero reflexivo y crítico.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Interpretativismo -->
+                        <div class="paradigm-card paradigm-interpretativism">
+                            <h3>Interpretativismo (Constructivismo)</h3>
+                            <div class="paradigm-section">
+                                <p class="paradigm-label">Concepción de la Realidad:</p>
+                                <p class="paradigm-text">
+                                    Múltiples realidades construidas socialmente. La realidad es dinámica y depende de las interpretaciones de los actores sociales.
+                                </p>
+                            </div>
+                            <div class="paradigm-section">
+                                <p class="paradigm-label">Propósito Principal:</p>
+                                <p class="paradigm-text">
+                                    Comprensión de significados y perspectivas. Co-construcción de conocimiento entre investigador y participantes.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Teoría Crítica -->
+                        <div class="paradigm-card paradigm-critical">
+                            <h3>Teoría Crítica</h3>
+                            <div class="paradigm-section">
+                                <p class="paradigm-label">Concepción de la Realidad:</p>
+                                <p class="paradigm-text">
+                                    Realidad moldeada por factores políticos, sociales y culturales. Reconoce estructuras de poder e ideología.
+                                </p>
+                            </div>
+                            <div class="paradigm-section">
+                                <p class="paradigm-label">Propósito Principal:</p>
+                                <p class="paradigm-text">
+                                    Transformación social, emancipación y crítica de estructuras de poder. Investigación comprometida y reflexiva.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEGMENT 3: CRITERIOS DE RIGOR CIENTÍFICO -->
+            <section>
+                <div class="segment-container segment-3">
+                    <div class="segment-header">
+                        <span class="segment-icon">✓</span>
+                        Segmento 3: Criterios de Rigor Científico en Investigación Cualitativa
+                    </div>
+
+                    <div class="content-grid">
+                        <!-- Credibilidad -->
+                        <div class="rigor-card rigor-credibilidad">
+                            <h4>Credibilidad</h4>
+                            <p class="rigor-description">
+                                Confiabilidad de los hallazgos. Garantiza que los datos recolectados sean auténticos y representen 
+                                fielmente las perspectivas de los participantes.
+                            </p>
+                            <p class="rigor-strategies">
+                                Estrategias: Triangulación, observación prolongada, revisión por participantes
+                            </p>
+                        </div>
+
+                        <!-- Transferibilidad -->
+                        <div class="rigor-card rigor-transferibilidad">
+                            <h4>Transferibilidad</h4>
+                            <p class="rigor-description">
+                                Posibilidad de aplicar hallazgos a otros contextos similares. No busca generalización estadística, 
+                                sino transferencia contextual.
+                            </p>
+                            <p class="rigor-strategies">
+                                Estrategias: Descripción densa, muestreo teórico, documentación detallada
+                            </p>
+                        </div>
+
+                        <!-- Dependencia -->
+                        <div class="rigor-card rigor-dependencia">
+                            <h4>Dependencia</h4>
+                            <p class="rigor-description">
+                                Consistencia y estabilidad de los resultados. Asegura que los hallazgos son confiables 
+                                y reproducibles bajo circunstancias similares.
+                            </p>
+                            <p class="rigor-strategies">
+                                Estrategias: Auditoría de proceso, documentación de decisiones, reflexividad
+                            </p>
+                        </div>
+
+                        <!-- Confirmabilidad -->
+                        <div class="rigor-card rigor-confirmabilidad">
+                            <h4>Confirmabilidad</h4>
+                            <p class="rigor-description">
+                                Verificabilidad de procesos y resultados. Garantiza que los hallazgos emergen de los datos 
+                                y no de los sesgos del investigador.
+                            </p>
+                            <p class="rigor-strategies">
+                                Estrategias: Pista de auditoría, reflexividad del investigador, triangulación
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Important Note -->
+                    <div class="important-note">
+                        <strong>Nota importante:</strong> Estos criterios de rigor científico en investigación cualitativa 
+                        no buscan emular los estándares de validez y confiabilidad del positivismo, sino establecer criterios propios que reconozcan 
+                        la naturaleza interpretativa y contextual del conocimiento cualitativo.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Synthesis Section -->
+            <section>
+                <div class="synthesis">
+                    <h2>💡 Síntesis Conceptual</h2>
+                    <p>
+                        La investigación cualitativa, fundamentada en paradigmas interpretativos y críticos, ofrece herramientas invaluables 
+                        para comprender la complejidad de los fenómenos educativos. Su énfasis en la contextualidad, la flexibilidad y el rol activo 
+                        del investigador permite capturar la riqueza de las experiencias humanas. El rigor científico en este enfoque se logra no 
+                        emulando criterios cuantitativos, sino estableciendo estándares propios de credibilidad, transferibilidad, dependencia y 
+                        confirmabilidad que honren la naturaleza interpretativa del conocimiento cualitativo.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Infografía Comparativa: Lo cualitativo en perspectiva paradigmática</p>
+            <p>Doctorado en Ciencias de la Educación | Métodos Cualitativos en la Investigación Educativa</p>
+        </div>
+    </footer>
+</body>
+</html>
