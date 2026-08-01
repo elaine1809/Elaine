@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organizador Gráfico: Variables de Análisis - TIC y Estilos de Aprendizaje</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #FAF8F2;
+      color: #2A2A2A;
+    }
+    header {
+      background: #1B365D;
+      color: white;
+      padding: 16px 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .header-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+    .header-subtitle {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 12px;
+      color: #93C5FD;
+    }
+    .nav-buttons {
+      display: flex;
+      gap: 8px;
+    }
+    .nav-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .nav-btn.active {
+      background: white;
+      color: #1B365D;
+    }
+    .nav-btn:not(.active) {
+      background: transparent;
+      color: #BFDBFE;
+    }
+    .nav-btn:not(.active):hover {
+      background: rgba(255,255,255,0.1);
+    }
+    main {
+      max-width: 2000px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+    .context-banner {
+      margin-bottom: 20px;
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid #D4C9B8;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .banner-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .banner-bar {
+      width: 4px;
+      height: 48px;
+      background: #1B365D;
+      border-radius: 99px;
+      flex-shrink: 0;
+    }
+    .banner-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1B365D;
+    }
+    .banner-text {
+      font-size: 14px;
+      color: #4A4A4A;
+      line-height: 1.6;
+      margin-top: 4px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .tag-vi {
+      padding: 6px 12px;
+      border-radius: 99px;
+      background: rgba(45,125,111,0.08);
+      color: #1A4A3F;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid rgba(45,125,111,0.2);
+    }
+    .tag-vd {
+      padding: 6px 12px;
+      border-radius: 99px;
+      background: rgba(196,112,75,0.08);
+      color: #7A3D28;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid rgba(196,112,75,0.2);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1B365D;
+      margin-bottom: 4px;
+    }
+    .section-subtitle {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 14px;
+      color: #8B7D6B;
+      margin-bottom: 12px;
+    }
+    .canvas-container {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid #D4C9B8;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: auto;
+      height: 2600px;
+      background: linear-gradient(135deg, #FAF8F2 0%, #F5F0E4 50%, #FAF8F2 100%);
+    }
+    .canvas-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .node-card {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    }
+    .node-card:hover {
+      transform: translate(-50%, -50%) scale(1.06);
+      z-index: 10;
+    }
+    .node-inner {
+      border-radius: 12px;
+      border: 1.5px solid;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s ease-out;
+    }
+    .node-card:hover .node-inner {
+      box-shadow: 0 10px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .node-img {
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: center;
+    }
+    .node-img img {
+      object-fit: contain;
+      border-radius: 6px;
+    }
+    .node-label {
+      line-height: 1.3;
+      font-family: 'Lato', sans-serif;
+    }
+    .node-citation {
+      font-size: 11px;
+      font-style: italic;
+      font-family: 'Source Sans 3', sans-serif;
+      opacity: 0.65;
+      margin-top: 3px;
+    }
+    .node-desc {
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px solid;
+      font-size: 11px;
+      line-height: 1.5;
+      font-family: 'Source Sans 3', sans-serif;
+      opacity: 0.85;
+    }
+    .legend {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      z-index: 20;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-radius: 12px;
+      padding: 16px 20px;
+      border: 1px solid #D4C9B8;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .legend-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      color: #8B7D6B;
+      margin-bottom: 12px;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .legend-color {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+    .legend-text {
+      font-size: 11px;
+      color: #4A4A4A;
+    }
+    .note-box {
+      margin-top: 16px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid #D4C9B8;
+    }
+    .note-text {
+      font-size: 12px;
+      color: #8B7D6B;
+      font-style: italic;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+    .references-section {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      border: 1px solid #D4C9B8;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .ref-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #1B365D;
+      margin-bottom: 24px;
+    }
+    .ref-item {
+      border-left: 2px solid #D4C9B8;
+      padding-left: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .ref-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #1B365D;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .ref-text {
+      font-size: 14px;
+      color: #2A2A2A;
+      line-height: 1.6;
+    }
+    .ref-link {
+      font-size: 12px;
+      color: #2D7D6F;
+      margin-top: 4px;
+      display: inline-block;
+      text-decoration: none;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+    .ref-link:hover { color: #1A4A3F; }
+    footer {
+      background: #1B365D;
+      color: #BFDBFE;
+      padding: 20px 24px;
+      text-align: center;
+      margin-top: 32px;
+    }
+    footer p { font-family: 'Source Sans 3', sans-serif; font-size: 12px; }
+    footer .sub { font-size: 10px; color: #93C5FD; margin-top: 4px; }
+    .hidden { display: none; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes drawLine { from { stroke-dashoffset: 1000; } to { stroke-dashoffset: 0; } }
+    .canvas-svg path {
+      stroke-dasharray: 1000;
+      animation: drawLine 1.5s ease-out forwards;
+    }
+    .node-card {
+      animation: fadeIn 0.5s ease-out forwards;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="header-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="2.5" fill="white"/>
+            <path d="M12 9.5V4" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M12 14.5V20" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M14.5 12H20" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M4 12H9.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M13.8 13.8L17.2 17.2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M6.8 6.8L10.2 10.2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M13.8 10.2L17.2 6.8" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M6.8 17.2L10.2 13.8" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="header-title">Organizador Gráfico: Variables de Análisis</h1>
+          <p class="header-subtitle">Doctorado en Ciencias de la Educación — Estado del Arte en la Investigación Educativa</p>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn active" onclick="showSection('mapa')">Mapa Mental</button>
+        <button class="nav-btn" onclick="showSection('referencias')">Referencias APA 7</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Mapa Section -->
+    <div id="section-mapa">
+      <!-- Context Banner -->
+      <div class="context-banner">
+        <div class="banner-inner">
+          <div class="banner-bar"></div>
+          <div>
+            <h2 class="banner-title">Fenómeno de Estudio</h2>
+            <p class="banner-text">Influencia del uso intenso de plataformas LMS y software educativo interactivo en la predominancia de estilos de aprendizaje en educación secundaria. Enfoque cuantitativo, con diseño cuasiexperimental o correlacional.</p>
+            <div class="tags">
+              <span class="tag-vi">VI: Nivel de exposición a TIC</span>
+              <span class="tag-vd">VD: Predominancia de estilos de aprendizaje</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <h3 class="section-title">Mapa Mental de Variables de Análisis</h3>
+      <p class="section-subtitle">Organizador gráfico con definiciones, dimensiones y citas en formato APA 7ª edición</p>
+
+      <!-- Canvas -->
+      <div class="canvas-container" id="canvas">
+        <svg class="canvas-svg" id="connectors-svg"></svg>
+        <!-- Nodes will be injected by JS -->
+      </div>
+
+      <!-- Note -->
+      <div class="note-box">
+        <p class="note-text"><strong>Nota:</strong> Este organizador gráfico presenta la articulación coherente entre las variables del estudio, con las dimensiones y subdimensiones fundamentadas en la literatura revisada. Todas las citas siguen el formato APA 7ª edición.</p>
+      </div>
+    </div>
+
+    <!-- Referencias Section -->
+    <div id="section-referencias" class="hidden">
+      <div class="references-section">
+        <h2 class="ref-title">Referencias</h2>
+        <div id="ref-list"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Actividad U2A1 — Mapa mental de las variables y/o categorías de análisis y sus dimensiones</p>
+    <p class="sub">Doctorado en Ciencias de la Educación — Universidad Cuauhtémoc</p>
+  </footer>
+
+  <script>
+    // --- IMAGE BASE URL ---
+    const IMG_BASE = "https://3000-i5y1dfs0w43qx7jfwar2q-b8c0e76c.us1.manus.computer";
+
+    // --- Data ---
+    const mindMapData = {
+      id: "root", label: "Fenómeno de Estudio",
+      description: "Influencia del uso intenso de plataformas LMS y software educativo interactivo en la predominancia de estilos de aprendizaje en educación secundaria",
+      image: "/manus-storage/img-fenomeno-estudio_5a14517b.png", type: "central",
+      children: [
+        { id: "vi", label: "Variable Independiente", description: "Nivel de exposición a Tecnologías de Información y Comunicación (TIC)",
+          image: "/manus-storage/img-tic-lms_189e8d05.png", type: "variable",
+          children: [
+            { id: "vi-conceptual", label: "Definición Conceptual", description: "Magnitud de integración de herramientas tecnológicas específicas (plataformas LMS y software educativo interactivo) en las prácticas pedagógicas, que determina el grado de mediación digital en los procesos de enseñanza.", citation: "Castro et al., 2007", type: "dimension",
+              children: [{ id: "vi-op", label: "Definición Operacional", description: "Categoría dicotómica medida por observación sistemática: (1) Uso intenso = ≥70% de sesiones con LMS y software interactivo; (2) Enseñanza tradicional = <20% de sesiones con herramientas digitales.", type: "operational", children: [] }]
+            },
+            { id: "vi-dim", label: "Dimensiones (Modelo PIOLA)", citation: "Muñoz Rojas, 2016", image: "/manus-storage/img-dimensiones-piola_86810bb7.png", type: "dimension",
+              children: [
+                { id: "vi-d1", label: "Productividad Individual", description: "Capacidad del estudiante para crear, editar y presentar productos académicos mediante herramientas digitales.", citation: "Muñoz Rojas, 2016", image: "/manus-storage/icon-productividad_22119413.png", type: "subdimension", children: [] },
+                { id: "vi-d2", label: "Interacción con otros", description: "Comunicación mediada por tecnología entre actores educativos (docente-estudiante, estudiante-estudiante).", citation: "Castro et al., 2007", image: "/manus-storage/icon-interaccion_594ba673.png", type: "subdimension", children: [] },
+                { id: "vi-d3", label: "Objetos de estudio", description: "Contenidos y recursos educativos digitalizados accesibles a través de plataformas LMS.", citation: "Moreno Trujillo et al., 2016", image: "/manus-storage/icon-objetos-estudio_a6d6cdf4.png", type: "subdimension", children: [] },
+                { id: "vi-d4", label: "Labores educativas", description: "Actividades de enseñanza mediadas por plataformas como Moodle y Google Classroom.", citation: "Moreno Trujillo et al., 2016", image: "/manus-storage/icon-labores-educativas_56c596dd.png", type: "subdimension", children: [] },
+                { id: "vi-d5", label: "Acervo cultural y tecnológico", description: "Bibliotecas digitales, repositorios y recursos educativos abiertos disponibles en la plataforma.", citation: "Peña Ubarne, 2026", image: "/manus-storage/icon-acervo-cultural_ae9f9e51.png", type: "subdimension", children: [] }
+              ]
+            }
+          ]
+        },
+        { id: "vd", label: "Variable Dependiente", description: "Predominancia de estilos de aprendizaje",
+          image: "/manus-storage/img-estilos-vark_1373e83b.png", type: "variable",
+          children: [
+            { id: "vd-conceptual", label: "Definición Conceptual", description: "Preferencia cognitiva dominante que caracteriza la forma en que un individuo procesa, asimila y retiene información, manifestada a través de modalidades sensoriales específicas (visual, auditivo o kinestésico).", citation: "Yotta, 2023", type: "dimension",
+              children: [{ id: "vd-op", label: "Definición Operacional", description: "Puntuaciones cuantitativas mediante cuestionarios estandarizados validados que miden la intensidad relativa de cada modalidad sensorial en una escala numérica continua.", type: "operational", children: [] }]
+            },
+            { id: "vd-dim", label: "Dimensiones (Modelo VARK)", citation: "Acosta, 2018", image: "/manus-storage/img-educacion-secundaria_c94101eb.png", type: "dimension",
+              children: [
+                { id: "vd-d1", label: "Estilo Visual", description: "El estudiante absorbe información a través de gráficos, diagramas, mapas mentales y elementos visuales.", citation: "Yotta, 2023", image: "/manus-storage/icon-estilo-visual_21cae886.png", type: "subdimension", children: [] },
+                { id: "vd-d2", label: "Estilo Auditivo", description: "El estudiante procesa información mediante el intercambio verbal, discusiones y explicaciones orales.", citation: "Yotta, 2023", image: "/manus-storage/icon-estilo-auditivo_529064f6.png", type: "subdimension", children: [] },
+                { id: "vd-d3", label: "Estilo Kinestésico", description: "El estudiante aprende mediante la acción, el movimiento y la manipulación de objetos físicos.", citation: "Yotta, 2023", image: "/manus-storage/icon-estilo-kinestesico_124e2735.png", type: "subdimension", children: [] },
+                { id: "vd-d4", label: "Lectura/Escritura", description: "El estudiante asimila información a través de la palabra escrita, libros, apuntes y elaboración de textos.", citation: "Lugo et al., 2019", image: "/manus-storage/icon-estilo-lectura_1fa2722c.png", type: "subdimension", children: [] }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    const references = [
+      { id: 1, text: "Acosta, J. Z. (2018). Estilos de aprendizaje, estrategias de aprendizaje y su relación con el uso de las TIC en estudiantes de educación secundaria.", journal: "Revista de Estilos de Aprendizaje", vol: "11", issue: "(21)", doi: "https://doi.org/10.55777/rea.v11i21.1087" },
+      { id: 2, text: "Castro, S., Escudey, M., Buxarrais, M., & Esteban, M. (2007). Las TIC en los procesos de enseñanza y aprendizaje.", journal: "Revista Electrónica de la Investigación Educativa", doi: "https://www.redalyc.org/pdf/761/76102311.pdf" },
+      { id: 3, text: "Lugo, G. M. A. S., Lozano-Rodríguez, A., & García-Cué, J. L. (2019). Identification of learning styles in technological platforms (LMS) through decision trees.", journal: "Revista de Estilos de Aprendizaje", vol: "12", issue: "(23)", doi: "https://doi.org/10.55777/rea.v12i23.1213" },
+      { id: 4, text: "Muñoz Rojas, H. A. (2016). Mediaciones tecnológicas: nuevos escenarios de la práctica pedagógica.", journal: "Praxis & Saber", vol: "7", issue: "(13)", pages: "145–168", doi: "http://www.scielo.org.co/scielo.php?pid=S2216-01592016000100010&script=sci_arttext" },
+      { id: 5, text: "Yotta, E. G. (2023). Accommodating students' learning styles differences in English language classroom.", journal: "Heliyon", vol: "9", issue: "(6)", pages: "e17497", doi: "https://doi.org/10.1016/j.heliyon.2023.e17497" }
+    ];
+
+    // --- Layout Engine ---
+    function computePositions(root, canvasW, canvasH) {
+      const positions = [];
+      const cx = canvasW * 0.08;
+      const cy = canvasH * 0.50;
+      positions.push({ node: root, x: cx, y: cy });
+
+      const viX = cx + canvasW * 0.13, viY = cy - canvasH * 0.25;
+      const vdX = cx + canvasW * 0.13, vdY = cy + canvasH * 0.25;
+      positions.push({ node: root.children[0], x: viX, y: viY });
+      positions.push({ node: root.children[1], x: vdX, y: vdY });
+
+      const vi_c1X = viX + canvasW * 0.15, vi_c1Y = viY - canvasH * 0.12;
+      const vi_c2X = viX + canvasW * 0.15, vi_c2Y = viY + canvasH * 0.12;
+      positions.push({ node: root.children[0].children[0], x: vi_c1X, y: vi_c1Y });
+      positions.push({ node: root.children[0].children[1], x: vi_c2X, y: vi_c2Y });
+
+      const vd_c1X = vdX + canvasW * 0.15, vd_c1Y = vdY - canvasH * 0.10;
+      const vd_c2X = vdX + canvasW * 0.15, vd_c2Y = vdY + canvasH * 0.10;
+      positions.push({ node: root.children[1].children[0], x: vd_c1X, y: vd_c1Y });
+      positions.push({ node: root.children[1].children[1], x: vd_c2X, y: vd_c2Y });
+
+      const vi_subX = vi_c2X + canvasW * 0.17;
+      const viSubNodes = root.children[0].children[1].children;
+      viSubNodes.forEach((child, i) => {
+        const offsetY = (i - (viSubNodes.length - 1) / 2) * (canvasH * 0.08);
+        positions.push({ node: child, x: vi_subX, y: vi_c2Y + offsetY });
+      });
+
+      const vd_subX = vd_c2X + canvasW * 0.17;
+      const vdSubNodes = root.children[1].children[1].children;
+      vdSubNodes.forEach((child, i) => {
+        const offsetY = (i - (vdSubNodes.length - 1) / 2) * (canvasH * 0.07);
+        positions.push({ node: child, x: vd_subX, y: vd_c2Y + offsetY });
+      });
+
+      const vi_opX = vi_c1X + canvasW * 0.17, vi_opY = vi_c1Y;
+      positions.push({ node: root.children[0].children[0].children[0], x: vi_opX, y: vi_opY });
+
+      const vd_opX = vd_c1X + canvasW * 0.17, vd_opY = vd_c1Y;
+      positions.push({ node: root.children[1].children[0].children[0], x: vd_opX, y: vd_opY });
+
+      return positions;
+    }
+
+    function getNodeColors(node) {
+      if (node.type === "central") return { bg: "#1B365D", text: "#FFFFFF", border: "#1B365D" };
+      if (node.type === "variable") return { bg: "#F5F0E8", text: "#1B365D", border: "#1B365D" };
+      if (node.type === "operational") return { bg: "#F8F6F1", text: "#4A4A4A", border: "#B8A88A" };
+      const isVI = node.id.startsWith("vi");
+      if (node.type === "dimension") return isVI
+        ? { bg: "#E8F4F0", text: "#1A4A3F", border: "#2D7D6F" }
+        : { bg: "#F5EDE8", text: "#7A3D28", border: "#C4704B" };
+      return isVI
+        ? { bg: "#F0FAF7", text: "#2D7D6F", border: "#2D7D6F" }
+        : { bg: "#FDF5F0", text: "#C4704B", border: "#C4704B" };
+    }
+
+    // --- Render ---
+    function renderMindMap() {
+      const canvas = document.getElementById("canvas");
+      const canvasW = canvas.offsetWidth || 1400;
+      const canvasH = 2600;
+      const positions = computePositions(mindMapData, canvasW, canvasH);
+
+      // Render connectors
+      const svg = document.getElementById("connectors-svg");
+      svg.innerHTML = "";
+      const connections = [
+        ["root", "vi", "vi"], ["root", "vd", "vd"],
+        ["vi", "vi-conceptual", "vi"], ["vi", "vi-dim", "vi"],
+        ["vd", "vd-conceptual", "vd"], ["vd", "vd-dim", "vd"],
+        ["vi-dim", "vi-d1", "vi"], ["vi-dim", "vi-d2", "vi"], ["vi-dim", "vi-d3", "vi"], ["vi-dim", "vi-d4", "vi"], ["vi-dim", "vi-d5", "vi"],
+        ["vd-dim", "vd-d1", "vd"], ["vd-dim", "vd-d2", "vd"], ["vd-dim", "vd-d3", "vd"], ["vd-dim", "vd-d4", "vd"],
+        ["vi-conceptual", "vi-op", "vi"], ["vd-conceptual", "vd-op", "vd"]
+      ];
+
+      connections.forEach(([fromId, toId, branch]) => {
+        const from = positions.find(p => p.node.id === fromId);
+        const to = positions.find(p => p.node.id === toId);
+        if (from && to) {
+          const color = branch === "vi" ? "#2D7D6F" : branch === "vd" ? "#C4704B" : "#8B7D6B";
+          const midX = (from.x + to.x) / 2;
+          const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          path.setAttribute("d", `M ${from.x} ${from.y} C ${midX} ${from.y}, ${midX} ${to.y}, ${to.x} ${to.y}`);
+          path.setAttribute("fill", "none");
+          path.setAttribute("stroke", color);
+          path.setAttribute("stroke-width", "2");
+          path.setAttribute("stroke-opacity", "0.45");
+          path.setAttribute("stroke-linecap", "round");
+          svg.appendChild(path);
+        }
+      });
+
+      // Render nodes
+      positions.forEach((p, idx) => {
+        const { node, x, y } = p;
+        const colors = getNodeColors(node);
+        const fs = node.type === "central" ? "18px" : node.type === "variable" ? "16px" : "13px";
+        const fw = node.type === "central" ? "700" : node.type === "variable" ? "600" : "400";
+        const pad = node.type === "central" ? "16px 22px" : "12px 16px";
+        const maxW = node.type === "central" ? "260px" : node.type === "variable" ? "240px" : "210px";
+        const imgSize = node.type === "central" ? "52px" : "42px";
+
+        let html = `<div class="node-inner" style="background:${colors.bg};border-color:${colors.border};color:${colors.text};max-width:${maxW};padding:${pad};">`;
+        if (node.image) {
+          html += `<div class="node-img"><img src="${IMG_BASE}${node.image}" alt="${node.label}" style="width:${imgSize};height:${imgSize};"></div>`;
+        }
+        html += `<div class="node-label" style="font-size:${fs};font-weight:${fw};">${node.label}</div>`;
+        if (node.citation) {
+          html += `<div class="node-citation">(${node.citation})</div>`;
+        }
+        if (node.description) {
+          html += `<div class="node-desc" style="border-color:${colors.border}30;">${node.description}</div>`;
+        }
+        html += `</div>`;
+
+        const div = document.createElement("div");
+        div.className = "node-card";
+        div.style.left = x + "px";
+        div.style.top = y + "px";
+        div.style.animationDelay = (idx * 0.05) + "s";
+        div.innerHTML = html;
+        canvas.appendChild(div);
+      });
+
+      // Legend
+      const legend = document.createElement("div");
+      legend.className = "legend";
+      legend.innerHTML = `
+        <p class="legend-title">Leyenda</p>
+        <div class="legend-item"><div class="legend-color" style="background:#1B365D;"></div><span class="legend-text">Fenómeno central</span></div>
+        <div class="legend-item"><div class="legend-color" style="background:#F5F0E8;border:2px solid #1B365D;"></div><span class="legend-text">Variables principales</span></div>
+        <div class="legend-item"><div class="legend-color" style="background:#E8F4F0;border:2px solid #2D7D6F;"></div><span class="legend-text">Variable Independiente (TIC)</span></div>
+        <div class="legend-item"><div class="legend-color" style="background:#F5EDE8;border:2px solid #C4704B;"></div><span class="legend-text">Variable Dependiente (Estilos)</span></div>
+      `;
+      canvas.appendChild(legend);
+    }
+
+    function renderReferences() {
+      const list = document.getElementById("ref-list");
+      references.forEach(ref => {
+        const div = document.createElement("div");
+        div.className = "ref-item";
+        div.innerHTML = `
+          <span class="ref-num">${ref.id}</span>
+          <div>
+            <p class="ref-text">${ref.text} <em style="color:#1B365D;">${ref.journal}</em>${ref.vol ? `, ${ref.vol}` : ""}${ref.issue ? `<em>${ref.issue}</em>` : ""}${ref.pages ? `, ${ref.pages}.` : ""}</p>
+            <a href="${ref.doi}" target="_blank" rel="noopener noreferrer" class="ref-link">🔗 ${ref.doi}</a>
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    function showSection(section) {
+      document.getElementById("section-mapa").classList.toggle("hidden", section !== "mapa");
+      document.getElementById("section-referencias").classList.toggle("hidden", section !== "referencias");
+      document.querySelectorAll(".nav-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.textContent.toLowerCase().includes(section === "mapa" ? "mapa" : "referencia"));
+      });
+    }
+
+    // Init
+    window.addEventListener("DOMContentLoaded", () => {
+      renderMindMap();
+      renderReferences();
+    });
+  </script>
+</body>
+</html>
